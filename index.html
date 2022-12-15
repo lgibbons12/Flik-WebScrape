@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  
+    <title>Flik Pre-Order</title>
+  
+    <!--Import the jquery library-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  </head>
+  <body>
+    <!--Creates form where the meals will be-->
+    <form>
+      
+      <script> 
+      //use AJAX to pull JSON data from github
+      $.ajax({
+        type: "Get",
+        url: "flik.json",
+        dataType: "json",
+        success: function(data) {
+
+  
+
+    
+          //deals with edge case where there is no food on the menu
+          if (data['Raw String'] === "No Food Today :)") {
+            let h1 = $("<h1>").text("No Food Today :)");
+            $("form").append(h1);
+          }
+          else {
+            
+            //creates soup header
+            let h1 = $("<h1>").text("Soup");
+            $("form").append(h1);
+
+            //creates variables for soup checkbox
+            let id = "soup";
+            let input = $("<input>").attr("name", id).attr("type", "checkbox");
+            let label = $("<label>").attr("for", id).text(data["Soup"]);
+            
+            //adds soup to the form
+            $("form").append(input, label);
+            
+            //creates entrees and sides header
+            h1 = $("<h1>").text("Entrees and Sides");
+            $("form").append(h1);
+
+            //creates a checkbox for each entree or side, adds it to the form, and hits a line break
+            for (let i = 0; i < data["Entrees/Sides"].length; i++) {
+              let id = "entrees" + "" + i;
+              let input = $("<input>").attr("name", id).attr("type", "checkbox");
+              let label = $("<label>").attr("for", id).text(data["Entrees/Sides"][i]);
+
+              $("form").append(input, label);
+              label.after("<br>");
+            }
+
+            //header for innovations
+            h1 = $("<h1>").text("Innovations");
+            $("form").append(h1);
+
+            //creates a checkbox for each innovation, adds it to the form, and hits a line break
+            for (let i = 0; i < data["Innovations"].length; i++) {
+              let id = "innovations" + "" + i;
+              let input = $("<input>").attr("name", id).attr("type", "checkbox");
+              let label = $("<label>").attr("for", id).text(data["Innovations"][i]);
+
+              $("form").append(input, label);
+              label.after("<br>");
+            }
+
+            //edge case to check if vegetarian exists
+            let name = "Vegetarian";
+            let keys = Object.keys(data);
+            
+            //if there is vegetarian. . .
+            if (keys.includes(name)) {
+              //header for vegetarian
+              h1 = $("<h1>").text("Vegetarian");
+              $("form").append(h1);
+
+              //creates a checkbox for each vegetarian, adds it to the form, and hits a line break
+              for (let i = 0; i < data["Vegetarian"].length; i++) {
+                let id = "veg" + "" + i;
+                let input = $("<input>").attr("name", id).attr("type", "checkbox");
+                let label = $("<label>").attr("for", id).text(data["Vegetarian"][i]);
+                $("form").append(input, label);
+                label.after("<br>");
+              }
+            }
+
+            //header for for gluten free
+            h1 = $("<h1>").text("Gluten Free");
+            $("form").append(h1);
+
+            //if gluten free is only one item long, just create a checkbox and add it to the form
+            if (data["Gluten Free"].length == 1) {
+              let id = "gf";
+              let input = $("<input>").attr("name", id).attr("type", "checkbox");
+              let label = $("<label>").attr("for", id).text(data["Gluten Free"]);
+
+              $("form").append(input, label);
+              label.after("<br>");
+            } 
+            //if there are multiple, creates checkboxes for each and add them to the form with line breaks in between
+            else {
+              for (let i = 0; i < data["Gluten Free"].length; i++) {
+                let id = "gf" + "" + i;
+                let input = $("<input>").attr("name", id).attr("type", "checkbox");
+                let label = $("<label>").attr("for", id).text(data["Gluten Free"][i]);
+
+                $("form").append(input, label);
+                label.after("<br>");
+              }
+            }
+
+            //couple of line breaks
+            $("form").append("<br>");
+            $("form").append("<br>");
+
+            //submit button
+            let submit = $("<input>").text("Submit").attr("type", "submit");
+            $("form").append(submit);
+          }
+        },
+        //catch in case the json file is not found
+        error: function(){
+          alert("json not found");
+        }
+    });   
+    </script>
+  
+  </form>
+
+   
+    
+</body>
+</html>
+  

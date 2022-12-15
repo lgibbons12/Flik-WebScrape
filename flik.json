@@ -1,0 +1,24 @@
+{
+    "Raw String": "Lunch\nLunch\nTue, Dec 13, 2022\nWed, Dec 14, 2022\nThu, Dec 15, 2022\nSoup\nChicken Vegetable Rice Soup\nEntree/Sides\nChicken, Shrimp, Sausage Jambalaya\nSteamed Corn on the Cob\nRoasted Rainbow Carrots\nCheddar Biscuit\nInnovation\nBuffalo Chicken Grilled Cheese\nParmesan Potato Wedges\nVegetarian\nGrilled American Cheese, Tomato, Wheat\nMade Without Gluten Containing Ingredients - Hot Lunch Combo\nHot Meal - Made Without Gluten Containing Ingredients\nGrilled Cheese on Gluten Free Bread\nBaked Tater Tots",
+    "Soup": "Chicken Vegetable Rice Soup",
+    "Entrees/Sides": [
+      "Chicken, Shrimp, Sausage Jambalaya",
+      "Steamed Corn on the Cob",
+      "Roasted Rainbow Carrots",
+      "Cheddar Biscuit"
+    ],
+    "Innovations": [
+      "Buffalo Chicken Grilled Cheese",
+      "Parmesan Potato Wedges"
+    ],
+    "Vegetarian": [
+      "Buffalo Chicken Grilled Cheese",
+      "Parmesan Potato Wedges",
+      "Vegetarian",
+      "Grilled American Cheese, Tomato, Wheat"
+    ],
+    "Gluten Free": [
+      "Grilled Cheese on Gluten Free Bread",
+      "Baked Tater Tots"
+    ]
+  }
